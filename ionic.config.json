@@ -1,0 +1,7 @@
+{
+  "name": "ticTacToe",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
