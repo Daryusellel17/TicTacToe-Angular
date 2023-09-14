@@ -8,14 +8,25 @@
 
 <!-- === Main Body (Game board) === -->
 <ion-content>
-  <app-game-board></app-game-board>
+  <app-game-board (currentPlayer)="getCurrentPlayer($event)"></app-game-board>
 </ion-content>
 
 <!--
   === Footer toolbar ===
-  Contains buttons to reset
-  the game
+  Contains the button to
+  reset the game and shows
+  the current player
 -->
 <ion-footer>
-
+  <ion-toolbar>
+    <!-- Current Player label -->
+    <ion-label id="current-player-label">
+      Player: {{ currentPlayer }}
+    </ion-label>
+    <!-- Reset button -->
+    <ion-button id="reset-button"
+                (click)="resetGame()">
+      Reset
+    </ion-button>
+  </ion-toolbar>
 </ion-footer>
