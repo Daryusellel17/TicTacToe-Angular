@@ -1,5 +1,5 @@
 <!-- === HEADER === -->
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
     <ion-title>Tic Tac Toe</ion-title>
   </ion-toolbar>
@@ -7,17 +7,20 @@
 
 <!-- === Main Body (Game board) === -->
 <ion-content>
-  <app-game-board (currentPlayer)="getCurrentPlayer($event)"></app-game-board>
+  <app-game-board (currentPlayer)="getCurrentPlayer($event)"
+                  (gameStatus)="getGameStatus($event)"></app-game-board>
 </ion-content>
 
 <!--
   === Footer toolbar ===
   Contains the button to
-  reset the game and shows
-  the current player
+  reset the game, shows
+  the current player and
+  the winner.
 -->
 <ion-footer>
   <ion-toolbar>
+    
     <!-- Current Player label -->
     <ion-label id="current-player-label">
       Player: {{ currentPlayer }}
@@ -28,8 +31,9 @@
       Reset
     </ion-button>
     <!-- Winner label -->
-    <ion-label *ngIf="board.checkWin()!=0">
-      Winner: {{ board.checkWin()==3? 'X': 'O' }}
+    <ion-label *ngIf="gameStatus">
+      Winner: {{ currentPlayer }}
     </ion-label>
+
   </ion-toolbar>
 </ion-footer>

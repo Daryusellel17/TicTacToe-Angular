@@ -1,0 +1,26 @@
+// -> Global Styling
+ion-app {
+    width: 50%;
+    margin: auto;
+}
+
+// -> Desktop View
+@media screen and (max-width: 1024px) {
+    ion-app {
+        width: 60%;
+    }
+}
+
+// -> Tablet View
+@media screen and (max-width: 768px) {
+    ion-app {
+        width: 80%;
+    }
+}
+
+// -> Mobile View
+@media screen and (max-width: 480px) {
+    ion-app {
+        width: 100%;
+    }
+}

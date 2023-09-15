@@ -1,30 +1,29 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, Output, EventEmitter, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-game-board',
   templateUrl: './game-board.component.html',
   styleUrls: ['./game-board.component.scss'],
 })
-export class GameBoardComponent {
+export class GameBoardComponent implements OnInit {
 
-  constructor() {
-    this.board = [
-      [0, 0, 0],
-      [0, 0, 0],
-      [0, 0, 0]
-    ];
-    this.player = true;
-    this.gameWon = false;
+  constructor() {}
+
+  ngOnInit() {
     this.returnCurrentPlayer();
     console.log("[i] Game board initiated.");
-   }
+  }
 
-
-  board: number[][]; // 0 = empty, 1 = X, -1 = O
-  player: boolean; // true = X, false = O
-  gameWon: boolean; // true = game won, false = game continues
+  board: number[][] = [ // 0 = empty, 1 = X, -1 = O
+    [0, 0, 0],
+    [0, 0, 0],
+    [0, 0, 0]
+  ]; 
+  player: boolean = true; // true = X, false = O
+  gameWon: boolean = false; // true = game won, false = game continues
   // Returns the current player represented by a string
   @Output() currentPlayer = new EventEmitter<string>();
+  @Output() gameStatus = new EventEmitter<boolean>(); // true = game won, false = game continues
 
   // - Changes the tunr of the player
   changePlayer() {
@@ -36,9 +35,18 @@ export class GameBoardComponent {
   place(row: number, col: number) {
     if(this.board[row][col] == 0) {
       this.board[row][col] = this.player? 1 : -1;
-      this.changePlayer();
-      console.log("[-] Player "+(!this.player? "X" : "O") + " has placed a piece at ("+row+", "+col+").");
+
+      // Checks the winner if there is one
+      if(this.checkWin()!=0) {
+        console.log("[+] Player "+(this.player? 'X':'O')+" has won the game!");
+        this.returnGameStatus();
+      }
+      else {
+        this.changePlayer();
+        console.log("[-] Player "+(!this.player? "X" : "O") + " has placed a piece at ("+row+", "+col+").");
+      }
       this.returnCurrentPlayer();
+      
     }
   }
 
@@ -52,6 +60,7 @@ export class GameBoardComponent {
     this.player = true;
     this.gameWon = false;
     this.returnCurrentPlayer();
+    this.returnGameStatus();
     console.log("[i] The game has been reset.");
   }
 
@@ -144,6 +153,11 @@ export class GameBoardComponent {
   // - Returns the current player to the parent component
   returnCurrentPlayer() {
     this.currentPlayer.emit(this.player? "X" : "O");
+  }
+
+  // - Returns the game status to the parent component
+  returnGameStatus() {
+    this.gameStatus.emit(this.gameWon);
   }
 
 }
