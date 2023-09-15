@@ -16,6 +16,7 @@ export class GameBoardComponent {
     this.player = true;
     this.gameWon = false;
     this.returnCurrentPlayer();
+    console.log("[i] Game board initiated.");
    }
 
 
@@ -28,7 +29,7 @@ export class GameBoardComponent {
   // - Changes the tunr of the player
   changePlayer() {
     this.player = !this.player;
-    console.log("[i] Player changed to "+this.player? "X" : "O"+".");
+    console.log("[i] Player changed to "+(this.player? "X" : "O")+".");
   }
 
   // - The player takes their turn
@@ -36,12 +37,13 @@ export class GameBoardComponent {
     if(this.board[row][col] == 0) {
       this.board[row][col] = this.player? 1 : -1;
       this.changePlayer();
-      console.log("[-] Player "+!this.player? "X" : "O" + " has placed a piece at ("+row+", "+col+").");
+      console.log("[-] Player "+(!this.player? "X" : "O") + " has placed a piece at ("+row+", "+col+").");
+      this.returnCurrentPlayer();
     }
   }
 
   // - Resets the game board
-  public resetGame() {
+  resetGame() {
     this.board = [
       [0, 0, 0],
       [0, 0, 0],
@@ -49,6 +51,7 @@ export class GameBoardComponent {
     ];
     this.player = true;
     this.gameWon = false;
+    this.returnCurrentPlayer();
     console.log("[i] The game has been reset.");
   }
 

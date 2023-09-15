@@ -2,60 +2,61 @@
 <ion-content>
   <ion-grid>
     <!-- Row 1 -->
-    <ion-col>
-      <ion-row>
-        <ion-button (click)="place(0,0)">
+    <ion-row>
+      <ion-col>
+        <ion-button (click)="place(0,0)" [disabled]="checkWin()!=0">
           <ion-icon [name]="board[0][0]==1? 'close-outline': board[0][0]==-1? 'ellipse-outline':''"></ion-icon>
         </ion-button>
-      </ion-row>
-      <ion-row>
-        <ion-button (click)="place(0,1)">
+      </ion-col>
+      <ion-col>
+        <ion-button (click)="place(0,1)" [disabled]="checkWin()!=0">
           <ion-icon [name]="board[0][1]==1? 'close-outline': board[0][1]==-1? 'ellipse-outline':''"></ion-icon>
         </ion-button>
-      </ion-row>
-      <ion-row>
-        <ion-button (click)="place(0,2)">
+      </ion-col>
+      <ion-col>
+        <ion-button (click)="place(0,2)" [disabled]="checkWin()!=0">
           <ion-icon [name]="board[0][2]==1? 'close-outline': board[0][2]==-1? 'ellipse-outline':''"></ion-icon>
         </ion-button>
-      </ion-row>
-    </ion-col>
+      </ion-col>
+    </ion-row>
 
     <!-- Row 2 -->
-    <ion-col>
-      <ion-row>
-        <ion-button (click)="place(1,0)">
+    <ion-row> 
+      <ion-col>
+        <ion-button (click)="place(1,0)" [disabled]="checkWin()!=0">
           <ion-icon [name]="board[1][0]==1? 'close-outline': board[1][0]==-1? 'ellipse-outline':''"></ion-icon>
         </ion-button>
-      </ion-row>
-      <ion-row>
-        <ion-button (click)="place(1,1)">
+      </ion-col>
+      <ion-col>
+        <ion-button (click)="place(1,1)" [disabled]="checkWin()!=0">
           <ion-icon [name]="board[1][1]==1? 'close-outline': board[1][1]==-1? 'ellipse-outline':''"></ion-icon>
         </ion-button>
-      </ion-row>
-      <ion-row>
-        <ion-button (click)="place(1,2)">
+      </ion-col>
+      <ion-col>
+        <ion-button (click)="place(1,2)" [disabled]="checkWin()!=0">
           <ion-icon [name]="board[1][2]==1? 'close-outline': board[1][2]==-1? 'ellipse-outline':''"></ion-icon>
         </ion-button>
-      </ion-row>
-    </ion-col>
+      </ion-col>
+    </ion-row>
 
     <!-- Row 3 -->
-    <ion-col>
-      <ion-row>
-        <ion-button (click)="place(2,0)">
+    <ion-row>
+      <ion-col>
+        <ion-button (click)="place(2,0)" [disabled]="checkWin()!=0">
           <ion-icon [name]="board[2][0]==1? 'close-outline': board[2][0]==-1? 'ellipse-outline':''"></ion-icon>
         </ion-button>
-      </ion-row>
-      <ion-row>
-        <ion-button (click)="place(2,1)">
+      </ion-col>
+      <ion-col>
+        <ion-button (click)="place(2,1)" [disabled]="checkWin()!=0">
           <ion-icon [name]="board[2][1]==1? 'close-outline': board[2][1]==-1? 'ellipse-outline':''"></ion-icon>
         </ion-button>
-      </ion-row>
-      <ion-row>
-        <ion-button (click)="place(2,2)">
+      </ion-col>
+      <ion-col>
+        <ion-button (click)="place(2,2)" [disabled]="checkWin()!=0">
           <ion-icon [name]="board[2][2]==1? 'close-outline': board[2][2]==-1? 'ellipse-outline':''"></ion-icon>
         </ion-button>
-      </ion-row>
-    </ion-col>
+      </ion-col>
+    </ion-row>
+    
   </ion-grid>
 </ion-content>

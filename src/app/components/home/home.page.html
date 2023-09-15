@@ -1,4 +1,3 @@
-
 <!-- === HEADER === -->
 <ion-header [translucent]="true">
   <ion-toolbar>
@@ -28,5 +27,9 @@
                 (click)="resetGame()">
       Reset
     </ion-button>
+    <!-- Winner label -->
+    <ion-label *ngIf="board.checkWin()!=0">
+      Winner: {{ board.checkWin()==3? 'X': 'O' }}
+    </ion-label>
   </ion-toolbar>
 </ion-footer>

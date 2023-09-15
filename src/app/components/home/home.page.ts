@@ -8,7 +8,7 @@ import { GameBoardComponent } from '../game-board/game-board.component';
 })
 export class HomePage {
 
-  constructor(private board: GameBoardComponent) {}
+  constructor(public board: GameBoardComponent) {}
 
 
   @Input() currentPlayer: string = "";
@@ -16,7 +16,7 @@ export class HomePage {
   // - Resets the game board
   resetGame() {
     this.board.resetGame();
-    console.log("[i] The game has been reset.");
+    
   }
 
   getCurrentPlayer($event: string) {
