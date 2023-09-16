@@ -21,19 +21,23 @@
 <ion-footer>
   <ion-toolbar>
     
-    <!-- Current Player label -->
-    <ion-label id="current-player-label">
-      Player: {{ currentPlayer }}
-    </ion-label>
-    <!-- Reset button -->
-    <ion-button id="reset-button"
-                (click)="resetGame()">
-      Reset
-    </ion-button>
-    <!-- Winner label -->
-    <ion-label *ngIf="gameStatus">
-      Winner: {{ currentPlayer }}
-    </ion-label>
+    <ion-item class="ion-no-padding" lines="none">
+      <!-- Current Player label -->
+      <ion-label>
+        Player: {{ currentPlayer }}
+      </ion-label>
+
+      <!-- Winner label -->
+      <ion-label *ngIf="gameStatus">
+        Winner: {{ currentPlayer }}
+      </ion-label>
+
+      <!-- Reset button -->
+      <ion-button id="reset-button"
+                  (click)="resetGame()">
+        <ion-label>Reset</ion-label>
+      </ion-button>
+    </ion-item>
 
   </ion-toolbar>
 </ion-footer>
