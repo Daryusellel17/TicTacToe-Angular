@@ -21,8 +21,25 @@ ion-title {
   font-family: 'Mooli', serif;
 }
 
+// === GAME BOARD ===
+ion-content {
+  height: 60%;
+  width: 100%;
+  margin: auto;
+}
+
+// Colored part of the title
+span {
+  font-size: 1.5rem;
+  background: linear-gradient(90deg, rgba(28,23,150,1) 0%, rgba(82,15,113,1) 50%, rgba(28,23,150,1) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 // === FOOTER ===
 ion-footer {
+  height: fit-content;
   width: 100%;
 
   ion-toolbar {
@@ -36,29 +53,33 @@ ion-footer {
     --border-top-left-radius: 20px;
     border-top-left-radius: 20px;
 
-    ion-item {
+    ion-grid {
       --background: none;
 
-      ion-label {
-        font-size: large;
-        font-family: 'Mooli', serif;
-      }
-
-      // --- Reset Button
-      ion-button {
-        --background: white;
-        --border-radius: 15px;
-        text-transform: none;
-        
-        // - Reset Label
-        ion-label {
-          color: linear-gradient(90deg, rgba(82,15,113,1) 0%, rgba(28,23,150,1) 50%, rgba(82,15,113,1) 100%);
-          font-weight: bolder;
-          font-family: 'Mooli', serif;
+      ion-row {
+        align-items: center;
+      
+        ion-col {
+          ion-label {
+            font-size: large;
+            font-family: 'Mooli', serif;
+          }
+    
+          // --- Reset Button
+          ion-button {
+            --background: white;
+            --border-radius: 15px;
+            text-transform: none;
+            
+            // - Reset Label
+            ion-label {
+              color: linear-gradient(90deg, rgba(82,15,113,1) 0%, rgba(28,23,150,1) 50%, rgba(82,15,113,1) 100%);
+              font-weight: bolder;
+              font-family: 'Mooli', serif;
+            }
+          }
         }
       }
     }
-
-    
   }
 }

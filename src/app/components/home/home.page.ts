@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ViewChild} from '@angular/core';
 import { GameBoardComponent } from '../game-board/game-board.component';
 
 @Component({
@@ -8,15 +8,15 @@ import { GameBoardComponent } from '../game-board/game-board.component';
 })
 export class HomePage {
 
-  constructor(private board: GameBoardComponent) {}
+  constructor() { }
 
-
+  @ViewChild('gameBoard') gameBoard!: GameBoardComponent;
   @Input() currentPlayer: string = "";
   @Input() gameStatus: boolean = false; // true = game won, false = game continues
 
   // - Resets the game board
   resetGame() {
-    this.board.resetGame();
+    this.gameBoard.resetGame();
   }
 
   // - Gets the current player from the child component

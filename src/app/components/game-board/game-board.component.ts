@@ -1,13 +1,14 @@
-import { Component, Output, EventEmitter, OnInit } from '@angular/core';
+import { Component, Output, EventEmitter, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'app-game-board',
   templateUrl: './game-board.component.html',
   styleUrls: ['./game-board.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Default
 })
 export class GameBoardComponent implements OnInit {
 
-  constructor() {}
+  constructor() {  }
 
   ngOnInit() {
     this.returnCurrentPlayer();
@@ -19,6 +20,11 @@ export class GameBoardComponent implements OnInit {
     [0, 0, 0],
     [0, 0, 0]
   ]; 
+  iconNames: string[][] = [ // Matric of icon names
+    ["", "", ""],
+    ["", "", ""],
+    ["", "", ""]
+  ];
   player: boolean = true; // true = X, false = O
   gameWon: boolean = false; // true = game won, false = game continues
   // Returns the current player represented by a string
@@ -32,12 +38,13 @@ export class GameBoardComponent implements OnInit {
   }
 
   // - The player takes their turn
-  place(row: number, col: number) {
-    if(this.board[row][col] == 0) {
+  async place(row: number, col: number) {
+    if(this.board[row][col] == 0 && !this.gameWon) {
       this.board[row][col] = this.player? 1 : -1;
+      this.iconNames[row][col] = this.player? "close-outline" : "ellipse-outline";
 
       // Checks the winner if there is one
-      if(this.checkWin()!=0) {
+      if(await this.checkWin()!=0) {
         console.log("[+] Player "+(this.player? 'X':'O')+" has won the game!");
         this.returnGameStatus();
       }
@@ -51,11 +58,16 @@ export class GameBoardComponent implements OnInit {
   }
 
   // - Resets the game board
-  resetGame() {
+  async resetGame(): Promise<void> {
     this.board = [
       [0, 0, 0],
       [0, 0, 0],
       [0, 0, 0]
+    ];
+    this.iconNames = [
+      ["''", "''", "''"],
+      ["''", "''", "''"],
+      ["''", "''", "''"]
     ];
     this.player = true;
     this.gameWon = false;
@@ -65,7 +77,7 @@ export class GameBoardComponent implements OnInit {
   }
 
   // - Checks if the game has been won
-  checkWin() {
+  async checkWin(): Promise<number> {
     // Checks all rows
     if(this.checkRows() != 0) {
       this.gameWon = true;

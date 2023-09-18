@@ -2,18 +2,25 @@ ion-content {
     --overflow: hidden;
 }
 
-ion-col {
-    display: flex;
-    justify-content: center;
+ion-grid {
+    --ion-grid-padding: 0px;
 
-    // --- Game buttons
-    ion-button {
-        
-        --background: linear-gradient(90deg, rgba(82,15,113,1) 0%, rgba(28,23,150,1) 50%, rgba(82,15,113,1) 100%);
-        font-size: larger;
+    ion-col {
+        border: 1px solid white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     
-        ion-icon {
-            color: white;
-        }
-    } 
+        // --- Game buttons
+        ion-button {
+            width: 95%;
+            height: 90%;
+            --background: linear-gradient(90deg, rgba(82,15,113,1) 0%, rgba(28,23,150,1) 50%, rgba(82,15,113,1) 100%);
+            font-size: larger;
+        
+            ion-icon {
+                color: white;
+            }
+        } 
+    }
 }
