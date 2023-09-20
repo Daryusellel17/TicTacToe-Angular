@@ -11,8 +11,9 @@ export class HomePage {
   constructor() { }
 
   @ViewChild('gameBoard') gameBoard!: GameBoardComponent;
-  @Input() currentPlayer: string = "";
-  @Input() gameStatus: boolean = false; // true = game won, false = game continues
+  @Input() player: string = "";
+  @Input() winner = "";
+  @Input() gameStatus: number = 0; // 0 = game continues, 1 = someone won, 2 = draw
 
   // - Resets the game board
   resetGame() {
@@ -21,12 +22,17 @@ export class HomePage {
 
   // - Gets the current player from the child component
   getCurrentPlayer($event: string) {
-    this.currentPlayer = $event;
+    this.player = $event;
   }
 
   // - Gets the game status from the child component
-  getGameStatus($event: boolean) {
+  getGameStatus($event: number) {
     this.gameStatus = $event;
+  }
+
+  // - Gets the winner from the child component
+  getWinner($event: string) {
+    this.winner = $event;
   }
   
 }

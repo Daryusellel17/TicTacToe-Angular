@@ -21,11 +21,10 @@ ion-title {
   font-family: 'Mooli', serif;
 }
 
-// === GAME BOARD ===
+// === Game Board Component ===
 ion-content {
-  height: 60%;
-  width: 100%;
-  margin: auto;
+  top: 15%;
+  bottom: 10%;
 }
 
 // Colored part of the title
@@ -47,23 +46,31 @@ ion-footer {
     --color: white;
     padding: 0% 2% 0% 2%;
     
+    // Border on the top of the footer
     border-top: 3px solid #ccc;
     --border-top-right-radius: 20px;
     border-top-right-radius: 20px;
     --border-top-left-radius: 20px;
     border-top-left-radius: 20px;
 
+    // Displayed info in the footer
     ion-grid {
       --background: none;
-
-      ion-row {
-        align-items: center;
       
+      ion-row { 
         ion-col {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          // --- Player/Winner label
           ion-label {
-            font-size: large;
-            font-family: 'Mooli', serif;
-          }
+            p {
+              font-size: large;
+              font-family: 'Mooli', serif;
+              color: white;
+            } // <p> end
+          } // <ion-label> end
     
           // --- Reset Button
           ion-button {
@@ -73,13 +80,14 @@ ion-footer {
             
             // - Reset Label
             ion-label {
+              font-size: large;
               color: linear-gradient(90deg, rgba(82,15,113,1) 0%, rgba(28,23,150,1) 50%, rgba(82,15,113,1) 100%);
               font-weight: bolder;
               font-family: 'Mooli', serif;
-            }
-          }
-        }
-      }
-    }
-  }
-}
+            } // <ion-label> end
+          } // <ion-button> end
+        } // <ion-col> end
+      } // <ion-row> end
+    } // <ion-grid> end
+  } // <ion-toolbar> end
+} // <ion-footer> end

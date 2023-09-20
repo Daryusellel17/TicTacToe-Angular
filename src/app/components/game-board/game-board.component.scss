@@ -2,9 +2,11 @@ ion-content {
     --overflow: hidden;
 }
 
+// === GAME BOARD ===
 ion-grid {
     --ion-grid-padding: 0px;
 
+    // Slots where the buttons will be located
     ion-col {
         border: 1px solid white;
         display: flex;
@@ -21,6 +23,6 @@ ion-grid {
             ion-icon {
                 color: white;
             }
-        } 
-    }
-}
+        } // <ion-button> end
+    } // <ion-col> end
+} // <ion-grid> end

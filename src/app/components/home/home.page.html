@@ -9,7 +9,8 @@
 <ion-content>
   <app-game-board #gameBoard
                   (currentPlayer)="getCurrentPlayer($event)"
-                  (gameStatus)="getGameStatus($event)"></app-game-board>
+                  (gameStatus)="getGameStatus($event)"
+                  (winner)="getWinner($event)"></app-game-board>
 </ion-content>
 
 <!--
@@ -22,21 +23,16 @@
 <ion-footer>
   <ion-toolbar>
 
-    <ion-grid class="ion-no-padding">
+    <ion-grid class="ion-no-padding" [fixed]="true">
       <ion-row>
 
-        <ion-col> <!-- Current Player label -->
+        <ion-col> <!-- Current Player/Winner label -->
           <ion-label>
-            Player: {{ currentPlayer }}
+            <p *ngIf="gameStatus==0">Player: {{ player }}</p>
+            <p *ngIf="gameStatus!=0">{{ winner == "Draw"? 'Draw' : 'Winner: ' + winner }}</p>
           </ion-label>
         </ion-col>
-
-        <ion-col> <!-- Winner label -->
-          <ion-label *ngIf="gameStatus">
-            Winner: {{ currentPlayer }}
-          </ion-label>
-        </ion-col>
-
+        
         <ion-col> <!-- Reset button -->
           <ion-button id="reset-button"
                       (click)="resetGame()">
